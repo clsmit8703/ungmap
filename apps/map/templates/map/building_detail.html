@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row">
         <div class="col-md-8">
-            {% if building.pic.pic %}
+            {% if building.current_photo.pic %}
                 <p><img src="{{ MEDIA_URL }}{{ building.pic.pic }}" width=100% height=auto></p>
                 <br>
             {% else %}
@@ -12,7 +12,13 @@
         </div>
         <div class="col-md-4">
             <p><b> {{ building.name|capfirst }}</b><br>
-                <b>{{ building.desc }}</b>
+                <b>{{ building.desc }}</b><br>
+                <b>Alternate Building Names:</b><br>
+                    {{ building.alter_name }}</p>
+
         </div>
     </div>
+    <p align="center" style="font-size:18px">
+        <a href="{% url 'map:ibuildingmap' pk=building.pk %}">Click to View {{ building.name }} Building on Map</a>
+    </p>
 {% endblock %}
